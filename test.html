@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="test.css">
+    <script type="text/javascript" src="test.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+    <title>前端测试</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div  class="header_center">
+                <button class="btn_logo">LOGO</button>
+                <span class="flo_right"><button class="btn_logout">Log Out</button></span>
+                <span class="iconfont ring">&#xe613;</span>
+                <span class="iconfont set">&#xe603;</span>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content_head">
+                <div class="head_left">
+                    <span class="AO">Audience Overview</span><br>
+                    <i class="RC">Roseille,CA</i>
+                </div>
+                <div class="head_right">
+                        <ul class="nav">
+                            <li name="slug"><a href="javascript:;">DASHBOARD</a></li>
+                            <li name="slug"><a href="javascript:;">PROJECTS</a></li>
+                            <li name="slug"><a href="javascript:;">CALENDAR</a></li>
+                            <li name="slug"><a href="javascript:;">MAILBOX</a></li>
+                            <li name="slug"><a href="javascript:;">SETTINGS</a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="content_center">
+                <div class="center_left">
+                    <!--图片-->
+                    <div class="slide" style="left: -500px">
+                        <img src="img/5.jpg" alt="">
+                        <img src="img/1.jpg" alt="">
+                        <img src="img/2.jpg" alt="">
+                        <img src="img/3.jpg" alt="">
+                        <img src="img/4.jpg" alt="">
+                        <img src="img/5.jpg" alt="">
+                        <img src="img/1.jpg" alt="">
+                    </div>
+                    <!--焦点-->
+                    <div class="buttons">
+                        <span name="dots"></span>
+                        <span name="dots"></span>
+                        <span name="dots"></span>
+                        <span name="dots"></span>
+                        <span name="dots"></span>
+                    </div>
+                   <span class="arrow arrow_left"><a href="javascript:;">&lt;</a></span>
+                    <span class="arrow arrow_right"><a href="javascript:;">&gt;</a></span>
+                </div>
+                <div class="center_right">
+                     <div class="cen_top">
+                           <span class="Sup">Support Requests</span>
+                           <span class="VA">View All</span>
+                     </div>
+                     <div class="cen_bottom">
+                          <table style="margin: auto;line-height: 66px" width="450px">
+                              <tr>
+                                  <th>TIME</th>
+                                  <th style="color: #d0e1fe">USER NAME</th>
+                                  <th>STATUS</th>
+                              </tr>
+                              <tr>
+                                  <td>9:45pm</td>
+                                  <td>info@design.com</td>
+                                  <td><button class="btn_solved">Solved</button></td>
+                              </tr>
+                              <tr>
+                                  <td>9:45pm</td>
+                                  <td>info@design.com</td>
+                                  <td><button class="btn_solved">Solved</button></td>
+                              </tr>
+                          </table>
+                     </div>
+                </div>
+            </div>
+            <div class="content_footer">
+                 <div class="up">
+                     <div id="main" style="width: 1000px;height: 320px;"></div>
+                     <script type="text/javascript">
+                         var chart = echarts.init(document.getElementById("main"));
+                         $.get('https://edu.telking.com/api/?type=month',function (data) {
+                             chart.setOption({
+                                 title:{
+                                     text:'曲线图数据展示',
+                                     x:'center'
+                                 },
+                                 xAxis:{
+                                     type:'category',
+                                     data:data.data.xAxis
+                                 },
+                                 yAxis:{
+                                     type:'value',
+                                     axisLabel:{
+                                         formatter:'{value}人'
+                                     }
+                                 },
+                                 series:{
+                                     type:'line',
+                                     smooth:true,
+                                     itemStyle:{
+                                         normal:{
+                                             lineStyle:{
+                                                 color:'#adc9f8'
+                                             }
+                                         }
+                                     },
+                                     areaStyle:{
+                                       color:{
+                                           type:'linear',
+                                           x:0,
+                                           y:0,
+                                           x2:0,
+                                           y2:1,
+                                           colorStops:[{
+                                               offset:0,color:'rgba(255,255,255,0.1)'
+                                           },{
+                                               offset:1,color:'rgba(0,0,0,0.1)'
+                                           }],
+                                           global:false
+                                       }
+                                     },
+                                     data:data.data.series
+                                 }
+
+                             })
+                         },'json')
+                     </script>
+                 </div>
+                <div class="down">
+                    <div class="down_left">
+                        <div id="pie" style="width: 500px;height:400px"></div>
+                        <script type="text/javascript">
+                            var piechart = echarts.init(document.getElementById('pie'));
+                            $.get('https://edu.telking.com/api/?type=week',function (data) {
+                                piechart.setOption({
+                                    title:{
+                                        text:'饼图数据展示',
+                                        x:'center'
+                                    },
+                                    series:[{
+                                        type:'pie',
+                                        radius:'55%',
+                                        data:(function () {
+                                            var rs = [];
+                                            for (var res in data.data.xAxis) {
+                                                rs.push({
+                                                    name:data.data.xAxis[res],
+                                                    value:data.data.series[res]
+                                                });
+                                            }
+                                            return  rs;
+                                        })()
+                                    }]
+                                })
+                            },'json')
+                        </script>
+                    </div>
+                    <div class="down_right">
+                        <div id="mychart" style="width: 500px;height:400px"></div>
+                        <script type="text/javascript">
+                            var mychart = echarts.init(document.getElementById('mychart'));
+                            $.get('https://edu.telking.com/api/?type=week',function (data) {
+                                mychart.setOption({
+                                    title:{
+                                        text:'柱状图数据展示',
+                                        x:'center'
+                                    },
+                                    xAxis:{
+                                      data:data.data.xAxis
+                                    },
+                                    yAxis:{},
+                                    series:[{
+                                        type:'bar',
+                                        data:data.data.series
+                                    }]
+                                })
+                            },'json')
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer_cont">
+               <div class="logo_div"> <button class="btn_logo logo2">LOGO</button></div>
+                <table width="700px">
+                    <tr>
+                        <td><span>NEWS</span></td>
+                        <td><span>SPORT</span></td>
+                        <td><span>WEATHER</span></td>
+                        <td><span>FUTURE</span></td>
+                        <td><span>TRAVEL</span></td>
+                    </tr>
+                    <tr> <td><span>CHANNELS</span></td>
+                        <td><span>CULTURE</span></td>
+                        <td><span>AUTOS</span></td>
+                        <td><span>FOOD</span></td>
+                        <td><span>RADIO</span></td></tr>
+                    <tr> <td><span>OVERVIEW</span></td>
+                        <td><span>NATURE</span></td>
+                        <td><span>LOCAL</span></td>
+                        <td><span>EARTH</span></td>
+                        <td><span></span></td></tr>
+                    <tr> <td><span>TIMELINE</span></td>
+                        <td><span>MUSIC</span></td>
+                        <td><span>SHIOP</span></td>
+                        <td><span>TV</span></td>
+                        <td><span></span></td></tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

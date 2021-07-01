@@ -1,0 +1,268 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a,li{
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+html,body{
+    height: 100%;
+
+}
+
+.header,.content{
+   width: 1000px;
+   margin: 0 auto;
+}
+.header{
+    height:70px;
+}
+.content{
+    height:1100px;
+}
+.footer{
+     height: 150px;
+     background:rgb(39, 38, 38);
+    position: relative;
+}
+/**图标库*/
+@font-face {
+    font-family: 'iconfont';  /* Project id 1234489 */
+    src: url('//at.alicdn.com/t/font_1234489_s7lwpv56pf.woff2?t=1625039583791') format('woff2'),
+         url('//at.alicdn.com/t/font_1234489_s7lwpv56pf.woff?t=1625039583791') format('woff'),
+         url('//at.alicdn.com/t/font_1234489_s7lwpv56pf.ttf?t=1625039583791') format('truetype');
+  }
+  .iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+
+  /**头部*/
+.header_center{
+    line-height: 70px;
+}
+.btn_logo{
+    height: 30px;
+    width: 100px;
+    background: red;
+    color: white;
+    border: none;
+}
+.ring,.set{
+    float: right;
+    margin-right: 10px;
+}
+.flo_right {
+    float: right;
+}
+.btn_logout{
+    height: 30px;
+    width: 100px;
+    background: red;
+    color: white;
+    border: none;
+}
+
+
+/**中间内容*/
+    /**内容头部*/
+.content_head{
+    height:120px;
+    background: white;
+}
+.head_left{
+    float: left;
+    height: 120px;
+    width: 50%;
+}
+.AO{
+    line-height: 60px;
+    font-size: 30px;
+}
+.RC{
+    color: darkgray;
+    font-size: 5px;
+}
+.head_right{
+    float: left;
+    height: 120px;
+    width: 50%;
+}
+   /**导航条*/
+.nav{
+    padding-top:10px ;
+    display: flex;
+    position: absolute;
+}
+.nav li{
+    position: relative;
+    padding: 8px;
+    white-space:nowrap;
+    margin-top: -2px;
+}
+.nav li::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: .5s all linear;
+}
+.slug{
+    border-bottom: 2px solid #000;
+}
+
+.nav li:hover::after{
+    width: 100%;
+}
+.nav li::after{
+    left: 100%;
+}
+.nav li:hover::after{
+    left: 0;
+}
+.nav li:hover ~ li::after{
+    left: 0;
+}
+
+.content_center{
+    height: 300px;
+}
+    /**轮播图*/
+.center_left {
+    position: relative;
+    float: left;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    background: cadetblue;
+
+}
+.slide{
+    position: absolute;
+    width:3500px ;
+    height: 300px;
+    z-index: 1;
+}
+.center_left .slide img{
+    float: left;
+    width: 500px;
+    height: 300px;
+}
+.center_left .buttons{
+    position: absolute;
+    right: 150px;
+    bottom: 20px;
+    width: 200px;
+    height: 10px;
+    z-index: 2;
+}
+.center_left .buttons span{
+    margin-left: 10px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    background: darkgray;
+    text-align: center;
+    cursor: pointer;
+}
+.center_left .buttons span.on{
+    background-color: white;
+}
+.center_left .arrow{
+    width: 10px;
+    height: 50px;
+    line-height: 50px;
+    color: gray;
+   position: absolute;
+    z-index: 2;
+   top: 35%;
+    padding: 0px 14px;
+    font-size: 50px;
+}
+.center_left .arrow_left{
+left: 5px;
+}
+.center_left .arrow_right{
+right: 7px;
+}
+.center_left .arrow .a:hover{
+    background-color: white;
+}
+
+
+.cen_top{
+    height: 100px;
+}
+.Sup{
+    line-height: 100px;
+    font-size: 20px;
+    margin-left: 30px;
+}
+.VA{
+   margin-left: 150px;
+    border:1px solid darkgray ;
+    color: darkgray;
+    padding: 10px;
+    font-size: 5px;
+}
+.cen_bottom{
+    height: 200px;
+}
+.cen_bottom th{
+    text-align: left;
+}
+.btn_solved{
+    border-radius: 10%;
+    height: 30px;
+    width: 60px;
+    background: green;
+    color: white;
+    border: none;
+}
+/**Echarts图**/
+.content_footer{
+    height: 700px;
+}
+.up{
+    height: 300px;
+}
+.down_left{
+    float: left;
+   width: 500px;
+   height:380px;
+}
+.down_right{
+    float: left;
+    width: 500px;
+    height:380px;
+}
+.footer_cont{
+    width: 1000px;
+    height: 100px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+}
+.logo_div{
+    float: left;
+    width: 200px;
+    height: 100px;
+}
+.logo2{
+    vertical-align: middle;
+}
+.footer_cont span{
+    color: white;
+}
+
