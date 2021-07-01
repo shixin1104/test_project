@@ -86,106 +86,16 @@
             <div class="content_footer">
                  <div class="up">
                      <div id="main" style="width: 1000px;height: 320px;"></div>
-                     <script type="text/javascript">
-                         var chart = echarts.init(document.getElementById("main"));
-                         $.get('https://edu.telking.com/api/?type=month',function (data) {
-                             chart.setOption({
-                                 title:{
-                                     text:'曲线图数据展示',
-                                     x:'center'
-                                 },
-                                 xAxis:{
-                                     type:'category',
-                                     data:data.data.xAxis
-                                 },
-                                 yAxis:{
-                                     type:'value',
-                                     axisLabel:{
-                                         formatter:'{value}人'
-                                     }
-                                 },
-                                 series:{
-                                     type:'line',
-                                     smooth:true,
-                                     itemStyle:{
-                                         normal:{
-                                             lineStyle:{
-                                                 color:'#adc9f8'
-                                             }
-                                         }
-                                     },
-                                     areaStyle:{
-                                       color:{
-                                           type:'linear',
-                                           x:0,
-                                           y:0,
-                                           x2:0,
-                                           y2:1,
-                                           colorStops:[{
-                                               offset:0,color:'rgba(255,255,255,0.1)'
-                                           },{
-                                               offset:1,color:'rgba(0,0,0,0.1)'
-                                           }],
-                                           global:false
-                                       }
-                                     },
-                                     data:data.data.series
-                                 }
-
-                             })
-                         },'json')
-                     </script>
+                     <script src="echarts.js"></script>
                  </div>
                 <div class="down">
                     <div class="down_left">
                         <div id="pie" style="width: 500px;height:400px"></div>
-                        <script type="text/javascript">
-                            var piechart = echarts.init(document.getElementById('pie'));
-                            $.get('https://edu.telking.com/api/?type=week',function (data) {
-                                piechart.setOption({
-                                    title:{
-                                        text:'饼图数据展示',
-                                        x:'center'
-                                    },
-                                    series:[{
-                                        type:'pie',
-                                        radius:'55%',
-                                        data:(function () {
-                                            var rs = [];
-                                            for (var res in data.data.xAxis) {
-                                                rs.push({
-                                                    name:data.data.xAxis[res],
-                                                    value:data.data.series[res]
-                                                });
-                                            }
-                                            return  rs;
-                                        })()
-                                    }]
-                                })
-                            },'json')
-                        </script>
+                        <script src="echarts.js"></script>
                     </div>
                     <div class="down_right">
                         <div id="mychart" style="width: 500px;height:400px"></div>
-                        <script type="text/javascript">
-                            var mychart = echarts.init(document.getElementById('mychart'));
-                            $.get('https://edu.telking.com/api/?type=week',function (data) {
-                                mychart.setOption({
-                                    title:{
-                                        text:'柱状图数据展示',
-                                        x:'center'
-                                    },
-                                    xAxis:{
-                                      data:data.data.xAxis
-                                    },
-                                    yAxis:{},
-                                    series:[{
-                                        type:'bar',
-                                        data:data.data.series
-                                    }]
-                                })
-                            },'json')
-                        </script>
+                        <script src="echarts.js"></script>
                     </div>
                 </div>
             </div>
