@@ -35,6 +35,7 @@ window.onload=function () {
         dots[index].className = "on"
     }
     function next_pic() {
+
         var newLeft;
         if (slide.style.left === "-3000px"){
             newLeft = -1000;

@@ -1,12 +1,10 @@
-window.onload = function () {
-
 //曲线图
     var chart = echarts.init(document.getElementById("main"));
     var req = new XMLHttpRequest();
     var url1 = "https://edu.telking.com/api/?type=month";
     req.open('get',url1);
     req.send(null);
-    req.onload = function () {
+    req.onreadystatechange = function () {
         var data = JSON.parse(req.responseText);
         chart.setOption({
             title: {
@@ -61,7 +59,7 @@ window.onload = function () {
     var url2 = "https://edu.telking.com/api/?type=week"
     xhr.open('get', url2);
     xhr.send(null);
-    xhr.onload = function () {
+    xhr.onreadystatechange = function () {
         var data = JSON.parse(xhr.responseText);
         piechart.setOption({
             title: {
@@ -91,7 +89,7 @@ window.onload = function () {
     var url3 = "https://edu.telking.com/api/?type=week"
     request.open('get', url3);
     request.send(null);
-    request.onload = function () {
+    request.onreadystatechange = function () {
         var data = JSON.parse(request.responseText);
         mychart.setOption({
             title: {
@@ -109,4 +107,3 @@ window.onload = function () {
         })
     }
 
-}
